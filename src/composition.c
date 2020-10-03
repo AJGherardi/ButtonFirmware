@@ -36,7 +36,7 @@ struct event_state event_state[] = {
     {.bound_scene = 0},
 };
 // Models
-static struct bt_mesh_model root_models[] = {
+struct bt_mesh_model root_models[] = {
     BT_MESH_MODEL_CFG_SRV(&cfg_srv),
     BT_MESH_MODEL_CFG_CLI(&cfg_cli),
     BT_MESH_MODEL_HEALTH_SRV(&health_srv, &health_pub),

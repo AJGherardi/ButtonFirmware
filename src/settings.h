@@ -3,6 +3,7 @@
 
 #include <string.h>
 #include <settings/settings.h>
+#include <bluetooth/mesh.h>
 
 extern struct k_work storage_work;
 
