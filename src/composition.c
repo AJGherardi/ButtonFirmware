@@ -44,6 +44,8 @@ struct bt_mesh_model root_models[] = {
                   NULL, &event_state[0]),
     BT_MESH_MODEL(BT_MESH_MODEL_ID_EVENT_CLI, NULL,
                   NULL, NULL),
+    BT_MESH_MODEL(BT_MESH_MODEL_ID_SCENE_SRV, NULL,
+                  NULL, NULL),
 };
 // Elements
 static struct bt_mesh_elem elements[] = {
