@@ -34,6 +34,8 @@ static const struct bt_mesh_model_op event_setup_srv_op[] = {
 struct event_state event_state[] = {
     {.bound_scene = 0},
     {.bound_scene = 0},
+    {.bound_scene = 0},
+    {.bound_scene = 0},
 };
 // Models
 struct bt_mesh_model root_models[] = {
@@ -47,9 +49,35 @@ struct bt_mesh_model root_models[] = {
     BT_MESH_MODEL(BT_MESH_MODEL_ID_SCENE_SRV, NULL,
                   NULL, NULL),
 };
+
+struct bt_mesh_model s0_models[] = {
+    BT_MESH_MODEL(BT_MESH_MODEL_ID_EVENT_SETUP_SRV, event_setup_srv_op,
+                  NULL, &event_state[1]),
+    BT_MESH_MODEL(BT_MESH_MODEL_ID_EVENT_CLI, NULL,
+                  NULL, NULL),
+
+};
+
+struct bt_mesh_model s1_models[] = {
+    BT_MESH_MODEL(BT_MESH_MODEL_ID_EVENT_SETUP_SRV, event_setup_srv_op,
+                  NULL, &event_state[2]),
+    BT_MESH_MODEL(BT_MESH_MODEL_ID_EVENT_CLI, NULL,
+                  NULL, NULL),
+};
+
+struct bt_mesh_model s2_models[] = {
+    BT_MESH_MODEL(BT_MESH_MODEL_ID_EVENT_SETUP_SRV, event_setup_srv_op,
+                  NULL, &event_state[3]),
+    BT_MESH_MODEL(BT_MESH_MODEL_ID_EVENT_CLI, NULL,
+                  NULL, NULL),
+};
+
 // Elements
 static struct bt_mesh_elem elements[] = {
     BT_MESH_ELEM(0, root_models, BT_MESH_MODEL_NONE),
+    BT_MESH_ELEM(0, s0_models, BT_MESH_MODEL_NONE),
+    BT_MESH_ELEM(0, s1_models, BT_MESH_MODEL_NONE),
+    BT_MESH_ELEM(0, s2_models, BT_MESH_MODEL_NONE),
 };
 // Comp
 const struct bt_mesh_comp comp = {
