@@ -73,31 +73,35 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb,
 	// Check element
 	if (pins == 4)
 	{
+		if (event_state[0].bound_scene != 0x0000)
+		{
+			write_mesh_recall(event_state[0].bound_scene, root_models[4].groups[0], root_models[4].keys[0]);
+		}
 		bt_mesh_model_send(&root_models[4], &ctx, &msg, NULL, NULL);
 	}
 	else if (pins == 8)
 	{
+		if (event_state[1].bound_scene != 0x0000)
+		{
+			write_mesh_recall(event_state[1].bound_scene, root_models[4].groups[0], root_models[4].keys[0]);
+		}
 		bt_mesh_model_send(&s0_models[1], &ctx, &msg, NULL, NULL);
 	}
 	else if (pins == 16)
 	{
-		struct bt_mesh_msg_ctx testctx = {
-			.net_idx = BT_MESH_NET_PRIMARY,
-			.app_idx = s1_models[1].keys[0],
-			.addr = 0x0001,
-			.send_ttl = BT_MESH_TTL_DEFAULT,
-		};
-
-		bt_mesh_model_send(&s1_models[1], &testctx, &msg, NULL, NULL);
+		if (event_state[2].bound_scene != 0x0000)
+		{
+			write_mesh_recall(event_state[2].bound_scene, root_models[4].groups[0], root_models[4].keys[0]);
+		}
+		bt_mesh_model_send(&s1_models[1], &ctx, &msg, NULL, NULL);
 	}
 	else if (pins == 32)
 	{
+		if (event_state[3].bound_scene != 0x0000)
+		{
+			write_mesh_recall(event_state[3].bound_scene, root_models[4].groups[0], root_models[4].keys[0]);
+		}
 		bt_mesh_model_send(&s2_models[1], &ctx, &msg, NULL, NULL);
-	}
-	// Recall scene if bound
-	if (event_state->bound_scene != 0x0000)
-	{
-		write_mesh_recall(event_state->bound_scene, root_models[4].groups[0], root_models[4].keys[0]);
 	}
 }
 
