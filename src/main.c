@@ -105,10 +105,10 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb,
 	}
 }
 
-void init_button(struct gpio_callback *callback, const char *lable, gpio_pin_t pin, gpio_flags_t flags)
+void init_button(struct gpio_callback *callback, const char *label, gpio_pin_t pin, gpio_flags_t flags)
 {
 	struct device *button;
-	button = device_get_binding(lable);
+	button = device_get_binding(label);
 	gpio_pin_configure(button, pin, flags);
 	gpio_pin_interrupt_configure(button, pin, GPIO_INT_EDGE_TO_ACTIVE);
 	gpio_init_callback(callback, button_pressed, BIT(pin));
